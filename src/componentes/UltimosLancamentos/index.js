@@ -5,7 +5,8 @@ const UltimosLancamentosContainer = styled.section`
     background-color: #EBECEE;
     padding-botton: 20px;
     display: flex;
-    
+    flex-direction: column;
+
 `
 
 const Titulo = styled.h2`
@@ -15,10 +16,12 @@ const Titulo = styled.h2`
     color: #EB9B00;
     justify-content: center;
     cursor: pointer;
+    align-self: ;
 `
 const NovosLivrosContainer = styled.div`
     margin-top: 30px;
     display: flex;
+    
     width: 100%;
     justify-content: center;
     cursor: pointer;
