@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Opcao = styled.ul`
   display: flex;
@@ -23,7 +25,9 @@ function OpcoesHeader(){
     return(
       <Opcoes>
         { textoOpcoes.map((texto) => (
-          <Opcao><p>{texto}</p></Opcao>
+          <Link to={`${texto.toLowerCase().replaceAll(' ', '_')}`}>
+            <Opcao><p>{texto}</p></Opcao>
+          </Link> 
         ) ) }
       </Opcoes>
     )

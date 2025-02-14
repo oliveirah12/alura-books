@@ -46,7 +46,6 @@ const ListaResultados = styled.div`
     width: 100vw;
     padding: 40px 0px;
     justify-content: center;
-    
 
     p {
         color: gray;

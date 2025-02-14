@@ -11,14 +11,6 @@ const UltimosLancamentosContainer = styled.section`
 
 `
 
-const Titulo = styled.h2`
-    width: 100%;
-    padding: 30px 0;
-    background-color: #FFFFFF;
-    color: #EB9B00;
-    justify-content: center;
-    cursor: pointer;
-`
 const NovosLivrosContainer = styled.div`
     margin-top: 30px;
     display: flex;
