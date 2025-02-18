@@ -1,7 +1,9 @@
 import Input from '../Input'
 import styled from 'styled-components'
+import LivroImage from '../../imagens/livro.png'
 import { useEffect, useState } from 'react'
 import { getLivros } from '../../servicos/livros'
+import { postFavorito } from '../../servicos/favoritos'
 
 
 
@@ -11,8 +13,9 @@ const PesquisaContainer = styled.section`
     color: #FFF;
     text-align: center;
     padding: 50px 0;
-    height: 270px;
-    width: 100%;
+    height: 70vh;
+    max-width: 100w;
+    width: 100vw;
 `
 
 const Titulo = styled.h2`
@@ -28,13 +31,21 @@ const Subtitulo = styled.h3`
     margin-bottom: 40px;
 `
 
+const ResultadoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+`
+
 const Resultado = styled.div`
     display: flex;
     align-items: center;
+    max-width: 100vh;
     width: 33%;
     flex-direction: column;
     gap: 0px;
-
+    cursor: pointer;
 
     &:hover {
         border: 1px solid orange
@@ -67,6 +78,11 @@ function Pesquisa() {
         setLivros(livrosDaAPI)
     }
 
+    async function insertFavorito(id){
+        await postFavorito(id)
+        alert('Livro favoritado')
+    }
+
     return (
         <PesquisaContainer>
             <Titulo>Já sabe por onde começar?</Titulo>
@@ -81,14 +97,16 @@ function Pesquisa() {
                     setLivrosPesquisados(resultadoPesquisa)
                 }}
             />
-            <ListaResultados>
-                {livrosPesquisados.map(livro => (
-                    <Resultado>
-                        <img src={livro.src} alt={livro.nome}/>
-                        <p>{livro.nome}</p>
-                    </Resultado>
-                ))}
-            </ListaResultados>
+            <ResultadoContainer>
+                <ListaResultados>
+                    {livrosPesquisados.map( livro => (
+                        <Resultado onClick={() => insertFavorito(livro.id)}>
+                            <img src={LivroImage} alt={livro.nome}/>
+                            <p>{livro.nome}</p>
+                        </Resultado>
+                    ))}
+                </ListaResultados>
+            </ResultadoContainer>
         </PesquisaContainer>
     )
 }
